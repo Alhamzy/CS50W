@@ -36,3 +36,8 @@ textarea {
 .sidebar h2 {
     margin-top: 5px;
 }
+
+.form-fields {
+    display: block;
+    margin-bottom: 10px;
+}

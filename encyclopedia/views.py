@@ -1,9 +1,21 @@
 from django.shortcuts import render
+from django import forms
 import re,os
 from . import util
 import markdown2
+from django.views.decorators.csrf import csrf_protect
 
 
+class NewEntryForm(forms.Form):
+    entry_title = forms.CharField(label = "Title")
+    text_area = forms.CharField(label = "Description")
+
+    entries = util.list_entries()
+    def clean_entry_title(self):
+        entry_title = self.cleaned_data['entry_title']
+        if entry_title in self.entries:
+            raise forms.ValidationError("Entry with this title already exists.")
+        return entry_title
 
 def index(request):
     return render(request, "encyclopedia/index.html", {
@@ -20,10 +32,29 @@ def view_entry(request,entry): # entry page
             'markdown_content': markdown_content
         })
     
-    #### insert case for "page not found" ####
     return render(request,"encyclopedia/page_not_found.html")    
 
-import re
+def new_entry(request):
+    entries = util.list_entries()
+    if request.method == 'POST':
+        form = NewEntryForm(request.POST)
+        if form.is_valid(): # add new entry to list
+            util.save_entry(form.cleaned_data['entry_title'],form.cleaned_data['text_area'])
+            markdown_content = util.get_entry(form.cleaned_data['entry_title'])
+            if markdown_content:
+                markdown_content = markdown_to_html(markdown_content)
+                return render(request,"encyclopedia/view_entry.html", {
+            'markdown_content': markdown_content
+        })
+            # return view_entry(request,form.cleaned_data['entry_title'])
+        else: # give user a chance to correct form
+            return render(request, "encyclopedia/new_entry.html",{
+                'form': form
+            })
+            
+    return render(request,"encyclopedia/new_entry.html",{
+        'form': NewEntryForm()
+    })
 
 def markdown_to_html(markdown_text):
     # Convert headers (up to level 6)
