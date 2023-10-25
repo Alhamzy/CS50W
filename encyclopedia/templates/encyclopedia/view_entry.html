@@ -1,0 +1,11 @@
+{% extends "encyclopedia/layout.html" %}
+{% block title %}
+    {{entry}}
+{% endblock %}
+{% block body %}
+
+    {% if entry %}
+        {{entry}}
+    {% endif %} 
+
+{% endblock %}
