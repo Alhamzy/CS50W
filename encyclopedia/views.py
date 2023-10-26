@@ -1,9 +1,11 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
+from django.urls import reverse
 from django import forms
 import re,os
 from . import util
 import markdown2
 from django.views.decorators.csrf import csrf_protect
+import random
 
 
 class NewEntryForm(forms.Form):
@@ -22,39 +24,40 @@ def index(request):
         "entries": util.list_entries()
     })
 
-def view_entry(request,entry): # entry page
-    markdown_content = util.get_entry(entry)
-    if markdown_content:
-        # convert MD to HTML
-        # convert headings, bold text, lists and links
+def view_entry(request,entry_title): # entry page
+    markdown_content = util.get_entry(entry_title)
+    if markdown_content: # convert MD to HTML
         markdown_content = markdown_to_html(markdown_content)
         return render(request,"encyclopedia/view_entry.html", {
             'markdown_content': markdown_content
         })
-    
     return render(request,"encyclopedia/page_not_found.html")    
 
 def new_entry(request):
     entries = util.list_entries()
     if request.method == 'POST':
         form = NewEntryForm(request.POST)
+        print("request is post")
         if form.is_valid(): # add new entry to list
             util.save_entry(form.cleaned_data['entry_title'],form.cleaned_data['text_area'])
-            markdown_content = util.get_entry(form.cleaned_data['entry_title'])
-            if markdown_content:
-                markdown_content = markdown_to_html(markdown_content)
-                return render(request,"encyclopedia/view_entry.html", {
-            'markdown_content': markdown_content
-        })
-            # return view_entry(request,form.cleaned_data['entry_title'])
+            # redirect user to new entry
+            return redirect("encyclopedia:view_entry",entry_title=form.cleaned_data['entry_title'])
         else: # give user a chance to correct form
             return render(request, "encyclopedia/new_entry.html",{
                 'form': form
             })
-            
     return render(request,"encyclopedia/new_entry.html",{
         'form': NewEntryForm()
     })
+
+def random_entry(request):
+    entries = util.list_entries()
+    rand  = random.randint(0,len(entries)-1)
+    entry_title = entries[rand]
+    return redirect('encyclopedia:view_entry',entry_title)
+
+    
+    
 
 def markdown_to_html(markdown_text):
     # Convert headers (up to level 6)

@@ -11,7 +11,7 @@
     <body>
         <div class="row">
             <div class="sidebar col-lg-2 col-md-3">
-                <h2>Wiki</h2>
+                <a href = "{% url 'encyclopedia:index' %}" style="color:black; text-decoration: none;"><h2>Wiki</h2></a>
                 <form>
                     <input class="search" type="text" name="q" placeholder="Search Encyclopedia">
                 </form>
@@ -22,7 +22,7 @@
                     <a href = "{% url 'encyclopedia:new_entry' %}">Create New Page</a>
                 </div>
                 <div>
-                    <a href = "{% url 'encyclopedia:random_page' entry=entry%}">Random Page</a>
+                    <a href = "{% url 'encyclopedia:random_entry' %}">Random Page</a>
                 </div>
                 {% block nav %}
                 {% endblock %}

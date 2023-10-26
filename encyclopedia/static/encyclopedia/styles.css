@@ -21,6 +21,11 @@ textarea {
     padding: 10px;
 }
 
+.wiki-logo {
+    color: #000000;
+    text-decoration: none;
+}
+
 .search {
     width: 100%;
     font-size: 15px;
@@ -35,6 +40,8 @@ textarea {
 
 .sidebar h2 {
     margin-top: 5px;
+    color:#000000;
+    text-decoration: none;
 }
 
 .form-fields {
