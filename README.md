@@ -1,5 +1,5 @@
 # All CS50W Projects: (Web Programming with Python and JavaScript) 
-** Completed and submitted by Mohamed Al Hamzy **
+*** Completed and submitted by Mohamed Al Hamzy ***
 
 ## Web Applications in Repository:
 - GoogleSearchClone: Google search interface. Contains Google search, advanced search and image search. Replicates normal Google queries.
