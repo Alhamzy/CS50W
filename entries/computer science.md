@@ -1,1 +1,0 @@
-specialization in fundamentals of computer inernals
