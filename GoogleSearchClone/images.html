@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Google Images Search</title>
+        <link rel = "stylesheet" href = "images.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+        <div class = "Links">
+            <a href = "index.html">Google</a>
+            <a style = "padding-left: 10px;" href = "advanced.html">Advanced Search</a>
+        </div>
+
+        <br>
+        <div class = "SearchArea">
+            <h1 style = "font-size:80px;">Google</h1>
+            <p style = "padding-left:200px;">Images</p>
+            <form action = "https://google.com/search">
+                <input type = "text" name = "q">
+                <div style = "padding-bottom:10px"></div>
+                <input type = "hidden" name = "sclient" value = "img">
+                <input type = "hidden" name = "tbm" value = "isch">
+                <i class="bi bi-mic-fill"></i>
+                
+                <input  type = "submit" value = "Search Images">
+            </form>
+        </div>
+
+    </body>
+</html>

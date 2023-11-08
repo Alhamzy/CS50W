@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Google Advanced Search</title>
+        <link rel = "stylesheet" href = "advanced.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+        <div class = "Links">
+            <a href = "index.html">Google</a>
+            <a style = "padding-left: 10px;" href = "images.html">Images Search</a>
+        </div>
+        <br>
+        <div class = "HeadingArea">
+            <h1 style = "font-size:80px">Google</h1>
+            <p>Advanced Search</p>
+        </div>
+        <div class="SearchArea">
+            <form action = "https://www.google.com/search">
+                <input type = "hidden" name = "as_q">
+                <label for = "as_q">all these words:</label>
+                <input type = "text" name = "as_q">
+                <br>
+
+                <label for = "as_epq" >this exact word or phrase:</label>
+                <input type = "text" name = "as_epq">
+                <br>
+
+                <label for = "as_oq">any of these words:</label>
+                <input type = "text" name = "as_oq">
+                <br>
+
+                <label for = "as_eq">none of these words:</label>
+                <input type = "none" name = "as_eq">
+
+                <br>
+                <br>
+                <input style = "margin-left: 50px; background-color: blue; color: white" type = "submit" value = "Advanced Search">
+            </form>
+        </div>
+
+    </body>
+</html>

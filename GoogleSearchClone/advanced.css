@@ -1,0 +1,34 @@
+.Links{
+    display:inline-block;
+    float: right;
+}
+
+.HeadingArea{
+    text-align: center;
+}
+.SearchArea{
+    text-align: left;
+    margin-inline-start: 20px;
+}
+
+input[type=label]{
+    margin-right: 30px;
+}
+input[type=submit]{
+    border-radius: 5px;
+    background-color: blue;
+    border-color: transparent;
+    border-color: white;
+
+
+}
+
+ 
+input[type=submit]:hover{
+    background-color: grey;
+}
+
+.form{
+    text-align: left;
+}
+

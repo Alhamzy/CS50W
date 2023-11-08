@@ -1,0 +1,24 @@
+.Links{
+    display:inline-block;
+    float: right;
+}
+
+.SearchArea{
+    text-align: center;
+}
+
+input[type=text]{
+    width: 400px;
+    border-color: grey;
+    border-radius: 20px;
+}
+
+input[type=submit]{
+    border-radius: 5px;
+    background-color: rgb(235, 226, 226);
+    border-color: transparent;
+
+}
+input[type=submit]:hover {
+    border-color: grey;
+  }
